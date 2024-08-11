@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.front_layouts.front_master');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//FrontEnd Routes//
+Route::namespace('Front')->group(function(){
+    Route::get('/','IndexController@index');
+    Route::get('/about-us','AboutUsController@about');
+    Route::get('/services','ServiceController@service');
+    Route::get('/portfolios','WorkController@portfolio');
+
+});
